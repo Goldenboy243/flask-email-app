@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Send Email</title>
+  <style>
+    /* Import a futuristic font from Google Fonts */
+    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
+
+    /* Animated, light gradient background */
+    body {
+      font-family: 'Orbitron', sans-serif;
+      background: linear-gradient(45deg, #f7f7f7, #e3f2fd);
+      animation: gradientAnimation 10s ease infinite;
+      color: #333;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    @keyframes gradientAnimation {
+      0% {
+        background: linear-gradient(45deg, #f7f7f7, #e3f2fd);
+      }
+      50% {
+        background: linear-gradient(45deg, #e3f2fd, #fce4ec);
+      }
+      100% {
+        background: linear-gradient(45deg, #f7f7f7, #e3f2fd);
+      }
+    }
+
+    /* Container styling with a subtle animated border effect */
+    .container {
+      background: rgba(255, 255, 255, 0.9);
+      border: 2px solid #66a6ff;
+      padding: 30px;
+      border-radius: 15px;
+      width: 350px;
+      text-align: center;
+      box-shadow: 0 0 15px rgba(102, 166, 255, 0.5);
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Animated border pseudo-element */
+    .container::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: conic-gradient(from 0deg, #66a6ff, #fce4ec, #66a6ff);
+      animation: rotate 6s linear infinite;
+      z-index: -1;
+      opacity: 0.2;
+    }
+
+    @keyframes rotate {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    h2 {
+      margin-bottom: 20px;
+      color: #66a6ff;
+      font-size: 24px;
+    }
+
+    label {
+      display: block;
+      margin: 12px 0 6px;
+      text-align: left;
+      font-weight: bold;
+      color: #555;
+    }
+
+    input,
+    textarea {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 2px solid #66a6ff;
+      border-radius: 6px;
+      font-size: 16px;
+      background: #fff;
+      transition: border-color 0.3s, box-shadow 0.3s;
+    }
+
+    input:focus,
+    textarea:focus {
+      border-color: #fce4ec;
+      box-shadow: 0 0 10px rgba(252, 228, 236, 0.7);
+      outline: none;
+    }
+
+    button {
+      background: #66a6ff;
+      color: #fff;
+      border: none;
+      padding: 12px;
+      width: 100%;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 18px;
+      font-weight: bold;
+      transition: transform 0.3s, background 0.3s;
+    }
+
+    button:hover {
+      background: #fce4ec;
+      transform: scale(1.05);
+    }
+
+    a {
+      display: inline-block;
+      margin-top: 15px;
+      color: #66a6ff;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+
+    a:hover {
+      color: #fce4ec;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Send Email</h2>
+    <form action="{{ url_for('send_mail') }}" method="POST">
+      <label>Recipient Email:</label>
+      <input type="email" name="recipient" required>
+      <label>Subject:</label>
+      <input type="text" name="subject" required>
+      <label>Message:</label>
+      <textarea name="body" required></textarea>
+      <button type="submit">Send Email</button>
+    </form>
+    <br>
+    <a href="{{ url_for('logout') }}">Logout</a>
+  </div>
+</body>
+</html>

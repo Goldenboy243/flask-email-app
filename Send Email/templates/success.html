@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Success</title>
+  <style>
+    /* Import a futuristic font from Google Fonts */
+    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
+
+    /* Animated light gradient background */
+    body {
+      font-family: 'Orbitron', sans-serif;
+      background: linear-gradient(45deg, #fff1e6, #fcefe3);
+      animation: gradientAnimation 8s ease infinite;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    @keyframes gradientAnimation {
+      0% {
+        background: linear-gradient(45deg, #fff1e6, #fcefe3);
+      }
+      50% {
+        background: linear-gradient(45deg, #fcefe3, #ffe7d2);
+      }
+      100% {
+        background: linear-gradient(45deg, #fff1e6, #fcefe3);
+      }
+    }
+
+    /* Popup container with animated scale effect */
+    .popup {
+      background: rgba(255, 255, 255, 0.95);
+      border: 2px solid #66a6ff;
+      border-radius: 15px;
+      padding: 30px;
+      text-align: center;
+      width: 350px;
+      box-shadow: 0 0 15px rgba(102, 166, 255, 0.5);
+      animation: popupAnimation 0.5s ease-out forwards;
+      position: relative;
+      z-index: 10;
+    }
+
+    @keyframes popupAnimation {
+      0% {
+        transform: scale(0.5);
+        opacity: 0;
+      }
+      100% {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+
+    .popup h2 {
+      color: #66a6ff;
+      margin-bottom: 15px;
+    }
+
+    .popup p {
+      color: #555;
+      margin-bottom: 20px;
+    }
+
+    .popup button {
+      background: #66a6ff;
+      color: #fff;
+      border: none;
+      padding: 12px 20px;
+      font-size: 16px;
+      font-weight: bold;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: transform 0.3s, background 0.3s;
+    }
+
+    .popup button:hover {
+      background: #ff5e62;
+      transform: scale(1.05);
+    }
+  </style>
+  <script>
+    window.onload = function() {
+      document.getElementById("popup").style.display = "block";
+    };
+    function closePopup() {
+      document.getElementById("popup").style.display = "none";
+      window.location.href = "/";
+    }
+  </script>
+</head>
+<body>
+  <div class="popup" id="popup">
+    <h2>Email Sent Successfully! ✅</h2>
+    <p>Your email has been delivered successfully.</p>
+    <button onclick="closePopup()">OK</button>
+  </div>
+</body>
+</html>
